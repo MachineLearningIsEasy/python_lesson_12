@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
 
-import json
-from flask import Flask, request, jsonify
 
 
 app = Flask(__name__)
@@ -36,9 +33,7 @@ class Model:
         return Model(json.loads(string))
 
 
-# -------
-# Routing: リクエストの URI とメソッドに応じた処理を呼び出し、結果を返す。
-# -------
+
 @app.route('/', methods=['GET'])
 def hello():
     return 'hello:)'
@@ -68,9 +63,7 @@ def delete(key, property_name):
         return jsonify(result.get_obj())
 
 
-# -------
-# モデルに対する操作
-# -------
+
 def get_model(key):
     return read_model(key)
 
@@ -95,9 +88,7 @@ def delete_property(key, property_name):
     return result
 
 
-# -------
-# 永続化層アクセス
-# -------
+
 def read_model(key):
     file_name = key + '.json'
     try:
